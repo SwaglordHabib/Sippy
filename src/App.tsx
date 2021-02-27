@@ -1,26 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { useTranslation } from 'react-i18next';
+import { Groups, IGroup } from './Group/Groups';
+import "./i18n/config";
 
-function App() {
+export interface IAppProps { }
+
+export const App: React.FunctionComponent<IAppProps> = (props: React.PropsWithChildren<IAppProps>) => {
+  const { t } = useTranslation(['Home']);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="App" style={{ height: "100vh" }}>
+      <header style={{ height: "54px", borderBottom: "1px", borderColor: "black" }}>
+        <h1 style={{ margin: 0, color: "black", display: "flex", alignItems: "left", marginLeft: "1rem" }}>{t('Home:Title')}</h1>
       </header>
+      <div>
+        <Groups Item={{} as IGroup}></Groups>
+      </div>
+      <div>
+        {/* List */}
+      </div>
+
     </div>
   );
-}
-
-export default App;
+};

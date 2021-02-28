@@ -1,0 +1,16 @@
+.Button {
+    border-width: 0px;
+    border-style: none;
+    border-color: transparent;
+    border-image: none;
+    height: 32px;
+    width: 32px;
+    background-color: transparent;
+}
+.Button > img.rotate {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}

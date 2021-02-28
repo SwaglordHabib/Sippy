@@ -1,25 +1,20 @@
 import React from 'react';
 import './App.css';
 import { useTranslation } from 'react-i18next';
-import { Groups, IGroup } from './Group/Groups';
+import { Groups, IGroup } from './components/Group/Groups';
 import "./i18n/config";
-import { Heading } from './Heading/Heading';
-import { IUser, User } from './User/User';
+import { Heading } from './components/Heading/Heading';
+import { IUser, User } from './components/User/User';
 import { Guid } from 'guid-typescript';
+import { IMember, Member } from './components/Members/Members';
 
 export interface IAppProps { }
 
 export const App: React.FunctionComponent<IAppProps> = (props: React.PropsWithChildren<IAppProps>) => {
   const { t } = useTranslation(['Home']);
 
-  return (
-    <div className="App" >
-      <header style={{ height: "54px", borderBottom: "1px", borderColor: "black" }}>
-        <h1 style={{ margin: 0, color: "black", display: "flex", alignItems: "left", marginLeft: "1rem" }}>{t('Home:Title')}</h1>
-      </header>
-      <div className={"App-Margin"}>
-        <User User={{
-          DisplayName: "manuel_seelig", Id: Guid.create(), Image: `data:image/jpeg;base64,
+  const user = ({
+    DisplayName: "manuel_seelig", Id: Guid.create(), Image: `data:image/jpeg;base64,
 /9j/4AAQSkZJRgABAQAAAQABAAD/7QCEUGhvdG9zaG9wIDMuMAA4QklNBAQAAAAAAGgcAigAYkZCT
 UQwYTAwMGE2ZjAxMDAwMDUxMDMwMDAwYzkwNjAwMDA3YzA3MDAwMDYxMDgwMDAwOGYwYzAwMDBmOT
 ExMDAwMDc0MTIwMDAwNDcxMzAwMDA0ZjE0MDAwMGUxMWQwMDAwAP/bAEMABgQFBgUEBgYFBgcHBgg
@@ -152,7 +147,15 @@ mjG0To1Whjda3gNwkqAYm3Vb1PWEGkgdAQL8YN+tpE3+Na1gGp4JfFxX5uSY7yPpwxQuDAs3eV1+H
 ICYJdGUrQ66uIY9ihHlg69OGyckH03NYhMuBpP6zcP4BbrjBKGKigmmi7O8FUe/Jndnf74tBqt08M
 wxUn043vTgpTXDz0uuckhVy3OfjnlfrABmw0Tw1zgqwl3A0/P7YCwReUq8Z0d/nADL2juesl/YdZ5
 Yaohe0OPeHC0jAr3pvWGllbCjAU+JggKEpAHRufcuHdxy8j419OdSQQA34yFkOjWAzr2YFe3QR85H
-BYaasWFIsnLhArSTNjtPyfrjmuxyLr7z/9k=` } as IUser} />
+BYaasWFIsnLhArSTNjtPyfrjmuxyLr7z/9k=`
+  } as IUser);
+  return (
+    <div className="App" >
+      <header style={{ height: "54px", borderBottom: "1px", borderColor: "black" }}>
+        <h1 style={{ margin: 0, color: "black", display: "flex", alignItems: "left", marginLeft: "1rem" }}>{t('Home:Title')}</h1>
+      </header>
+      <div className={"App-Margin"}>
+        <User User={user} />
       </div>
       <div className={"App-Margin"}>
         <Heading Title={t("Home:Groups")} />
@@ -160,9 +163,8 @@ BYaasWFIsnLhArSTNjtPyfrjmuxyLr7z/9k=` } as IUser} />
       </div>
       <div className={"App-Margin"}>
         <Heading Title={t("Home:Members")} />
-
+        <Member Member={{ ...user } as IMember}></Member>
       </div>
-
     </div>
   );
 };

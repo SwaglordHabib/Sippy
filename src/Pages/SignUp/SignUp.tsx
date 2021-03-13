@@ -1,12 +1,10 @@
 import React from 'react';
 import './SignUp.css';
 import { useTranslation } from 'react-i18next';
-import "./i18n/config";
-import { TextField, TextFieldType, TextFieldWithValidation, Valid } from './components/TextField/TextField';
-import { validateLocaleAndSetLanguage } from 'typescript';
-import { ButtonWithIcon, Icon } from './components/Buttons/IconButton';
-import { CheckBox } from './components/CheckBox/CheckBox';
-import { IUser, User } from './components/User/User';
+import "../../../src/i18n/config";
+import { ButtonWithIcon, Icon } from '../../components/Buttons/IconButton';
+import { CheckBox } from '../../components/CheckBox/CheckBox';
+import { TextFieldWithValidation, TextFieldType, Valid, TextField } from '../../components/TextField/TextField';
 
 export interface ISignUpProps { }
 
@@ -49,13 +47,13 @@ export const SignUp: React.FunctionComponent<ISignUpProps> = (props: React.Props
           Value={(password: string) => { setretypepassword(password); }}
           Validate={(value) => ValidatePassword(Password, value)} />
         <CheckBox Text={t('SignUp:termsandconditions')} OnClick={(value: boolean) => { setTOS(value); }}></CheckBox>
-        <ButtonWithIcon Icon={Icon.Arrow_Right} Disabled={!TOS && Username.length > -1 && Password.length > -1 && Email.length > -1 && Retypepassword.length > -1} Text={t('SignUp:signup')} OnClick={() => {
+        <ButtonWithIcon Icon={Icon.Arrow_Right} Disabled={!TOS && !(Username.length > -1) && !(Password.length > -1) && !(Email.length > -1) && !(Retypepassword.length > -1)} Text={t('SignUp:signup')} OnClick={() => {
           fetch("http://localhost:8080/api/register", {
             body: JSON.stringify({
               "username": Username,
               "password": Password,
               "email": Email
-            }), mode: "cors", headers: { "Accept": "application/json" }
+            }), method: "POST", mode: "cors", headers: { "Accept": "application/json", "Content-Type": "application/json" }
           });
         }} />
         <div className={"SignUp-SignIn"}>

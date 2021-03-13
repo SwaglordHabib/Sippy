@@ -1,0 +1,10 @@
+{
+    "email": "email",
+    "username": "username",
+    "password": "password",
+    "retypepassword": "retype password",
+    "termsandconditions": "I've read the terms and conditions.",
+    "signup": "Sign Up",
+    "textacc": "I already have an account, ",
+    "signin": "Sign In."
+}

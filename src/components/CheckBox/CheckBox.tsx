@@ -1,4 +1,3 @@
-import { Stack } from '@fluentui/react';
 import React from 'react';
 import "../../i18n/config";
 import "./CheckBox.css";

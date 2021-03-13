@@ -1,0 +1,10 @@
+.checkbox{
+    margin-top: 14px;
+}
+
+.checkbox-text {
+    text-align: left;
+    font: normal normal bold 14px/17px Corbel;
+    letter-spacing: 0.28px;
+    color: #404040;
+}

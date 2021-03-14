@@ -5,6 +5,7 @@ import "../../../src/i18n/config";
 import { ButtonWithIcon, Icon } from '../../components/Buttons/IconButton';
 import { CheckBox } from '../../components/CheckBox/CheckBox';
 import { TextFieldWithValidation, TextFieldType, Valid, TextField } from '../../components/TextField/TextField';
+import { Copyright } from '../SignIn/SignIn';
 
 export interface ISignUpProps { }
 
@@ -61,6 +62,9 @@ export const SignUp: React.FunctionComponent<ISignUpProps> = (props: React.Props
           <a className={"SignUp-Colortext"} href={"/signin"}>{t('SignUp:signin')}</a>
         </div>
       </div>
+      <footer className={"SignUp-Footer"}>
+        <span className={"SignUp-Footer-Text"}>{Copyright}</span>
+      </footer>
     </div>
   );
 };

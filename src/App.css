@@ -1,6 +1,6 @@
 .App {
   height: 100vh;
-  background: #FBFBFB 0% 0% no-repeat padding-box;
+  background: #fbfbfb 0% 0% no-repeat padding-box;
 }
 
 .App-logo {
@@ -29,7 +29,26 @@
   color: #61dafb;
 }
 
-.App-Margin{
+.App-Margin {
   margin-left: 16px;
   margin-right: 16px;
+}
+
+.App-Footer {
+  margin-left: 16px;
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 20px;
+  right: 0px;
+  left: 0px;
+}
+
+.App-Footer-Text {
+  text-align: left;
+  font: normal normal 300 12px/14px Corbel;
+  letter-spacing: 0px;
+  color: #404040;
 }

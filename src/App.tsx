@@ -7,6 +7,7 @@ import { Heading } from './components/Heading/Heading';
 import { IUser, User } from './components/User/User';
 import { Guid } from 'guid-typescript';
 import { IMember, Member } from './components/Members/Members';
+import { Copyright } from './Pages/SignIn/SignIn';
 
 export interface IAppProps { }
 
@@ -165,6 +166,9 @@ BYaasWFIsnLhArSTNjtPyfrjmuxyLr7z/9k=`
         <Heading Title={t("Home:Members")} />
         <Member Member={{ ...user } as IMember}></Member>
       </div>
+      <footer className={"App-Footer"}>
+        <span className={"App-Footer-Text"}>{Copyright}</span>
+      </footer>
     </div>
   );
 };

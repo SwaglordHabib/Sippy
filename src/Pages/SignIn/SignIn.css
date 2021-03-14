@@ -78,3 +78,23 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px #fbfbfb inset;
 }
+
+
+.SignIn-Footer {
+  margin-left: 16px;
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 40px;
+  right: 0px;
+  left: 0px;
+}
+
+.SignIn-Footer-Text {
+  text-align: left;
+  font: normal normal 300 12px/14px Corbel;
+  letter-spacing: 0px;
+  color: #404040;
+}

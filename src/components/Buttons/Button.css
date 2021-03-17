@@ -3,9 +3,9 @@
     border-style: none;
     border-color: transparent;
     border-image: none;
+    background-color: transparent;
     height: 32px;
     width: 32px;
-    background-color: transparent;
 }
 .Button > img.rotate {
     -webkit-transform: rotate(180deg);
@@ -54,4 +54,40 @@
 
 .Button-Img-Disabled {
     opacity: 0.5;
+}
+
+.Button-Icon-Small {
+    background: #ffffff 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 8px;
+    padding: 6px 12px 12px 6px;
+    border-width: 0px;
+    border-style: none;
+    border-color: transparent;
+    border-image: none;
+    background-color: transparent;
+    height: 32px;
+    width: 80px;
+}
+.Button-Text-Small {
+    text-align: right;
+    font: normal normal bold 16px/19px Corbel;
+    letter-spacing: 0.32px;
+    color: #404040;
+}
+.Button-Text-Small-Left {
+    margin-left: 10px;
+    text-align: right;
+    font: normal normal bold 16px/19px Corbel;
+    letter-spacing: 0.32px;
+    color: #404040;
+}
+.Button-Text-Small-Disabled {
+    text-align: right;
+    font: normal normal bold 16px/19px Corbel;
+    letter-spacing: 0.32px;
+    color: #404040;
+}
+.Button-Img-Small {
+    margin-right: 4px;
 }

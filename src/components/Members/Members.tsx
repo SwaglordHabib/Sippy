@@ -1,10 +1,10 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { Stack } from '@fluentui/react/lib/components/Stack/Stack';
 import { IUser } from '../User/User';
 import { Icon, IconButton, RotateIconButton } from '../Buttons/IconButton';
 import "../../i18n/config";
 import "./Members.css";
+import { emptyPic } from '../../Pages/UserSettings/UserSettings';
 
 export enum Role {
     Creator = 255,
@@ -25,13 +25,13 @@ export interface IMemberProps {
 
 export const Member: React.FunctionComponent<IMemberProps> = (props: React.PropsWithChildren<IMemberProps>) => {
     const [Expanded, setExpanded] = React.useState(false);
-    const { t } = useTranslation(['Group']);
+    // const { t } = useTranslation(['Group']);
 
     return (
         <div>
             <div className={"member"}>
                 <Stack horizontal>
-                    <img className={"member-img"} src={props.Member.Image}></img>
+                    <img className={"member-img"} src={props.Member.Image ? props.Member.Image : emptyPic} alt={"profil"}></img>
                     <span className={"member-name"}>{props.Member.DisplayName}</span>
                     <Stack className={"member-actions"} horizontal>
                         {Expanded ? <IconButton Icon={Icon.Expand} OnClick={() => { setExpanded(!Expanded); }} />

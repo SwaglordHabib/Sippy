@@ -1,0 +1,103 @@
+.UserSettings {
+  height: 100vh;
+  background: #fbfbfb 0% 0% no-repeat padding-box;
+}
+
+.UserSettings-Margin {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.UserSettings-Header {
+  height: 260px;
+}
+
+.UserSettings-Headering {
+  position: absolute;
+  top: 172px;
+  left: 140px;
+  width: 93px;
+  height: 49px;
+  text-align: left;
+  font: italic normal bold 40px/49px Corbel;
+  letter-spacing: 0px;
+  color: #707070;
+}
+
+.UserSettings-Text {
+  text-align: left;
+  font: normal normal bold 16px/19px Corbel;
+  letter-spacing: 0.32px;
+  color: #404040;
+}
+.UserSettings-Colortext {
+  text-align: left;
+  font: normal normal bold 16px/19px Corbel;
+  letter-spacing: 0.32px;
+  color: #ee45bb;
+}
+
+.UserSettings-UserSettings {
+  margin-top: 20px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #fbfbfb inset;
+}
+
+.UserSettings-Footer {
+  margin-left: 16px;
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 40px;
+  right: 0px;
+  left: 0px;
+}
+
+.UserSettings-Footer-Text {
+  text-align: left;
+  font: normal normal 300 12px/14px Corbel;
+  letter-spacing: 0px;
+  color: #404040;
+}
+
+.UserSettings-Profil-Picture {
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 50%;
+  width: 128px;
+  height: 128px;
+  margin: auto;
+}
+.UserSettings-Buttons {
+  margin-top: 16px;
+}
+
+.UserSettings-Inputs {
+  margin-top: 40px;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+.UserSettings-Change {
+  margin-left: 16px;
+  margin-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.UserSettings-Colortext-Change {
+  font: normal normal bold 10px/11px Corbel;
+  letter-spacing: 0px;
+  color: #ee45bb;
+  margin-top: 8px;
+}

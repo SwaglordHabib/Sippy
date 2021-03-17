@@ -31,7 +31,7 @@ export const App: React.FunctionComponent<IAppProps> = (props: React.PropsWithCh
   return (
     <div className="App" >
       <header style={{ height: "54px", borderBottom: "1px", borderColor: "black" }}>
-        <h1 style={{ margin: 0, color: "black", display: "flex", alignItems: "left", marginLeft: "1rem" }}>{t('Home:Title')}</h1>
+        <h1 className={"App-title"}>Sippy</h1>
       </header>
       <div className={"App-Margin"}>
         <User User={user} />

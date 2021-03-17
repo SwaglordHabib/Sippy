@@ -83,7 +83,7 @@ function ValidateUsername(username: string): Promise<Valid> {
 }
 
 function ValidateEmail(email: string): Promise<Valid> {
-  const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(email) ? fetch(`http://localhost:8080/api/Validate/email/${email}`, { mode: "cors", headers: { "Accept": "application/json" } })
     .then((res) => res.json())
     .then(obj => obj["valid"])

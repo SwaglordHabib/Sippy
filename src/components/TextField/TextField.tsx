@@ -18,6 +18,7 @@ export interface ITextFieldProps {
     Title: string;
     Type: TextFieldType;
     Placeholder?: string;
+    DefaultValue?: string;
     Value: (value: string) => void;
 }
 
@@ -33,7 +34,8 @@ export const TextField: React.FunctionComponent<ITextFieldProps> = (props: React
                 <input className={"textfield-input"}
                     type={props.Type}
                     placeholder={props.Placeholder}
-                    onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
+                    defaultValue={props.DefaultValue}
+                    onChange={(e: React.FocusEvent<HTMLInputElement>) => {
                         props.Value(e.target.value.trim());
                     }} />
             </Stack>
@@ -53,7 +55,7 @@ export const TextFieldWithValidation: React.FunctionComponent<ITextFieldWithVali
                     <input className={"textfield-input"}
                         type={props.Type}
                         placeholder={props.Placeholder}
-                        onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
+                        onChange={(e: React.FocusEvent<HTMLInputElement>) => {
                             props.Validate(e.target.value.trim()).then((valid) => {
                                 setvalid(valid);
                                 valid === Valid.Valid && props.Value(e.target.value);

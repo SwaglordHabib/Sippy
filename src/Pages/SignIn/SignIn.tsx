@@ -16,8 +16,7 @@ export const SignIn: React.FunctionComponent<ISignInProps> = (props: React.Props
   const [fetches, setFetch] = React.useState(0);
   if (fetches === 0) {
     setFetch(1);
-    fetch("http://localhost:8080/api/signin", {
-      body: "", method: "POST", mode: "cors", headers: { "Accept": "application/json", "Content-Type": "application/json", }, credentials: 'include'
+    fetch("http://localhost:8080/api/auth", { method: "GET", mode: "cors", headers: { "Accept": "application/json", "Content-Type": "application/json", }, credentials: 'include'
     }).then((response) => {
       if (response.status === 200) {
         history.push("/");

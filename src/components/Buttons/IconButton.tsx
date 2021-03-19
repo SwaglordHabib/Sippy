@@ -26,8 +26,8 @@ export interface IButtonWithIconProps extends IIconButtonProps {
 export const IconButton: React.FunctionComponent<IIconButtonProps> = (props: React.PropsWithChildren<IIconButtonProps>) => {
 
     return (
-        <button className={"Button"}>
-            <img src={props.Icon} alt={props.Icon.toString()} onClick={props.OnClick} ></img>
+        <button className={"Button"} onClick={props.OnClick}>
+            <img src={props.Icon} alt={props.Icon.toString()}  ></img>
         </button>
     );
 };
@@ -35,10 +35,10 @@ export const IconButton: React.FunctionComponent<IIconButtonProps> = (props: Rea
 export const ButtonWithIcon: React.FunctionComponent<IButtonWithIconProps> = (props: React.PropsWithChildren<IButtonWithIconProps>) => {
 
     return (
-        <button className={"Button-Icon"} disabled={props.Disabled}>
+        <button className={"Button-Icon"} disabled={props.Disabled} onClick={props.OnClick}>
             <Stack horizontal>
                 <span className={!props.Disabled ? "Button-Text" : "Button-Text-Disabled"}>{props.Text}</span>
-                <img className={!props.Disabled ? "Button-Img" : "Button-Img-Disabled"} src={props.Icon} alt={props.Icon.toString()} onClick={props.OnClick} />
+                <img className={!props.Disabled ? "Button-Img" : "Button-Img-Disabled"} src={props.Icon} alt={props.Icon.toString()} />
             </Stack>
         </button>
     );
@@ -47,8 +47,8 @@ export const ButtonWithIcon: React.FunctionComponent<IButtonWithIconProps> = (pr
 export const RotateIconButton: React.FunctionComponent<IIconButtonProps> = (props: React.PropsWithChildren<IIconButtonProps>) => {
 
     return (
-        <button className={"Button"}>
-            <img className={"rotate"} src={props.Icon} alt={props.Icon.toString()} onClick={props.OnClick} ></img>
+        <button className={"Button"} onClick={props.OnClick}>
+            <img className={"rotate"} src={props.Icon} alt={props.Icon.toString()} ></img>
         </button>
     );
 };
@@ -56,9 +56,9 @@ export const RotateIconButton: React.FunctionComponent<IIconButtonProps> = (prop
 export const IconWithButtonSmall: React.FunctionComponent<IButtonWithIconProps> = (props: React.PropsWithChildren<IButtonWithIconProps>) => {
 
     return (
-        <button className={"Button-Icon-Small"} disabled={props.Disabled}>
+        <button className={"Button-Icon-Small"} disabled={props.Disabled} onClick={props.OnClick}>
             <Stack horizontal>
-                <img className={!props.Disabled ? "Button-Img-Small" : "Button-Img-Small-Disabled"} src={props.Icon} alt={props.Icon.toString()} onClick={props.OnClick} />
+                <img className={!props.Disabled ? "Button-Img-Small" : "Button-Img-Small-Disabled"} src={props.Icon} alt={props.Icon.toString()} />
                 <span className={!props.Disabled ? "Button-Text-Small-Left" : "Button-Text-Small-Disabled"}>{props.Text}</span>
             </Stack>
         </button>
@@ -68,10 +68,10 @@ export const IconWithButtonSmall: React.FunctionComponent<IButtonWithIconProps> 
 export const ButtonWithIconSmall: React.FunctionComponent<IButtonWithIconProps> = (props: React.PropsWithChildren<IButtonWithIconProps>) => {
 
     return (
-        <button className={"Button-Icon-Small"} disabled={props.Disabled}>
+        <button className={"Button-Icon-Small"} disabled={props.Disabled} onClick={props.OnClick}>
             <Stack horizontal>
                 <span className={!props.Disabled ? "Button-Text-Small" : "Button-Text-Small-Disabled"} style={{ marginRight: "10px" }}>{props.Text}</span>
-                <img className={!props.Disabled ? "Button-Img-Small" : "Button-Img-Small-Disabled"} src={props.Icon} alt={props.Icon.toString()} onClick={props.OnClick} />
+                <img className={!props.Disabled ? "Button-Img-Small" : "Button-Img-Small-Disabled"} src={props.Icon} alt={props.Icon.toString()} />
             </Stack>
         </button>
     );

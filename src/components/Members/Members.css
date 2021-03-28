@@ -7,6 +7,7 @@
     border-radius: 8px;
     position: relative;
     z-index: 1;
+    margin-top: 20px;
 }
 
 .member-expanded {
@@ -43,10 +44,24 @@
 
 .member-name {
     margin-top: 4px;
-    width: 258px;
+    width: 148px;
+    max-width: 148px ;
     height: 21px;
     text-align: left;
     font: normal normal bold 14px/17px Corbel;
+    letter-spacing: 0px;
+    color: #707070;
+}
+
+.member-open {
+    margin-top: 4px;
+    margin-right: 8px;
+    width: auto;
+    height: 32px;
+    align-self: center;
+    height: 21px;
+    text-align: left;
+    font: normal normal normal 14px/17px Corbel;
     letter-spacing: 0px;
     color: #707070;
 }

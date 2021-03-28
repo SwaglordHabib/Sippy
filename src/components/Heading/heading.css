@@ -13,3 +13,14 @@
     opacity: 1;
     left: 12px;
 }
+
+.heading-title-big {
+    text-align: left;
+    font: normal normal bold 20px/24px Corbel;
+    letter-spacing: 0.4px;
+    color: #404040;
+    margin-left: 12px;
+}
+.center{
+    text-align: center;
+}

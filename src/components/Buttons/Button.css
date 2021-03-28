@@ -7,6 +7,17 @@
     height: 32px;
     width: 32px;
 }
+
+.Button-Heading {
+    border-width: 0px;
+    border-style: none;
+    border-color: transparent;
+    border-image: none;
+    background-color: transparent;
+    height: 20px;
+    width: 32px;
+}
+
 .Button > img.rotate {
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);

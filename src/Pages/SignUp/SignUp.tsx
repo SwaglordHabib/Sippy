@@ -49,13 +49,7 @@ export const SignUp: React.FunctionComponent<ISignUpProps> = (props: React.Props
           Validate={(value) => ValidatePassword(Password, value)} />
         <CheckBox Text={t('SignUp:termsandconditions')} OnClick={(value: boolean) => { setTOS(value); }}></CheckBox>
         <ButtonWithIcon Icon={Icon.Arrow_Right} Disabled={!TOS && !(Username.length > -1) && !(Password.length > -1) && !(Email.length > -1) && !(Retypepassword.length > -1)} Text={t('SignUp:signup')} OnClick={() => {
-          fetch("http://localhost:8080/api/register", {
-            body: JSON.stringify({
-              "username": Username,
-              "password": Password,
-              "email": Email
-            }), method: "POST", mode: "cors", headers: { "Accept": "application/json", "Content-Type": "application/json" }
-          });
+          register(Username, Password, Email);
         }} />
         <div className={"SignUp-SignIn"}>
           <span className={"SignUp-Text"}>{t('SignUp:textacc')}</span>
@@ -68,6 +62,16 @@ export const SignUp: React.FunctionComponent<ISignUpProps> = (props: React.Props
     </div>
   );
 };
+
+function register(Username: string, Password: string, Email: string) {
+  fetch("http://localhost:8080/api/register", {
+    body: JSON.stringify({
+      "username": Username,
+      "password": Password,
+      "email": Email
+    }), method: "POST", mode: "cors", headers: { "Accept": "application/json", "Content-Type": "application/json" }
+  });
+}
 
 function ValidatePassword(password: string, retypedPassword: string): Promise<Valid> {
   return new Promise((resolve) => {

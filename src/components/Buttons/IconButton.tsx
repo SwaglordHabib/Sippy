@@ -11,6 +11,7 @@ export enum Icon {
     Arrow_Right = "/Icons/Icon_Arrow_right.svg",
     Save = "/Icons/ICON_Save.svg",
     Back = "/Icons/ICON_Back.svg",
+    Plus = "/Icons/Icon_Plus.svg"
 }
 
 export interface IIconButtonProps {
@@ -19,14 +20,23 @@ export interface IIconButtonProps {
 }
 
 export interface IButtonWithIconProps extends IIconButtonProps {
-    Text: string;
-    Disabled: boolean;
+    Text?: string;
+    Disabled?: boolean;
 }
 
 export const IconButton: React.FunctionComponent<IIconButtonProps> = (props: React.PropsWithChildren<IIconButtonProps>) => {
 
     return (
         <button className={"Button"} onClick={props.OnClick}>
+            <img src={props.Icon} alt={props.Icon.toString()}  ></img>
+        </button>
+    );
+};
+
+export const IconHeadingButton: React.FunctionComponent<IIconButtonProps> = (props: React.PropsWithChildren<IIconButtonProps>) => {
+
+    return (
+        <button className={"Button-Heading"} onClick={props.OnClick}>
             <img src={props.Icon} alt={props.Icon.toString()}  ></img>
         </button>
     );

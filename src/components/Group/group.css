@@ -5,11 +5,20 @@
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 8px;
     opacity: 1;
+    margin-right: 16px;
+}
+.group-highlight {
+    border: 1px solid #ee45bb;
+    width: 156px;
+    height: 108px;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 8px;
+    opacity: 1;
+    margin-right: 16px;
 }
 
 .group-info{
-    position: relative;
-    top: 2.5em
 }
 
 .group-header {
@@ -21,8 +30,8 @@
     color: #707070;
     opacity: 1;
     position: relative;
-    top: 12px;
-    left: 12px;
+    margin-top: 12px;
+    margin-left: 12px;
 }
 
 .group-info-open {
@@ -45,9 +54,21 @@
     letter-spacing: 0px;
     color: #707070;
     opacity: 1;
-    position: relative;
-    left: 12px;
+    margin-left: 12px;
     margin-top: 2px;
 }
 
 
+.group-member-image{
+    height: 16px;
+    width: 16px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border-radius: 50%;
+}
+.group-imgs{
+    margin-left: 12px;
+}
+.group-imgs img:not(:first-child){
+    margin-left: -12px;
+}

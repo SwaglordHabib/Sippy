@@ -5,9 +5,10 @@ import { Groups, IGroup } from './components/Group/Groups';
 import "./i18n/config";
 import { Heading } from './components/Heading/Heading';
 import { IUser, User } from './components/User/User';
-import { Guid } from 'guid-typescript';
 import { IMember, Member } from './components/Members/Members';
 import { Copyright } from './Pages/SignIn/SignIn';
+import history from './Router/history';
+import { Stack } from '@fluentui/react';
 
 export interface IAppProps { }
 
@@ -15,15 +16,28 @@ export const App: React.FunctionComponent<IAppProps> = (props: React.PropsWithCh
   const { t } = useTranslation(['Home']);
 
   const [user, setUser] = React.useState({} as IUser);
+  const [group, setGroup] = React.useState<IGroup[]>([]);
+  const [selected, setSelected] = React.useState<number | null>(null);
 
   const [fetches, setFetch] = React.useState(0);
   if (fetches === 0) {
     setFetch(1);
-    fetch("http://localhost:8080/api/user/me", {
-      method: "GET", mode: "cors", headers: { "Accept": "application/json", "Content-Type": "application/json", }, credentials: 'include'
-    }).then((response) => response.json()).then((data) => {
-      const u = { DisplayName: data["displayname"], Id: data["id"], Image: data["image"], Open: data["open"], Total: data["total"] } as IUser;
+    getMe().then((response) => response.json()).then((data) => {
+      const u = mapJSONUser(data);
       setUser(u);
+      getGroupsByUser(u).then((response) => response.json()).then((data) => {
+        const gs: IGroup[] = [];
+        for (let i = 0; i < data.length; i++) {
+          const g = mapJSONGroups(data, i);
+          gs.push(g);
+        }
+        setGroup([...group, ...gs]);
+        if (gs.length > 0) {
+          if (gs[0].Members.length > 0) {
+            setSelected(0);
+          }
+        }
+      });
     });
   }
 
@@ -37,16 +51,38 @@ export const App: React.FunctionComponent<IAppProps> = (props: React.PropsWithCh
         <User User={user} />
       </div>
       <div className={"App-Margin"}>
-        <Heading Title={t("Home:Groups")} />
-        <Groups Item={{ DisplayName: "Jägermeister", Id: Guid.create(), Open: 71, Total: 235 } as IGroup} />
+        <Heading Title={t("Home:Groups")} OnClick={() => { history.push("/newgroup"); }} />
+        <Stack horizontal>
+          {group.map((g, i) => <Groups Item={g} OnClick={() => setSelected(i)} Highlighted={i === selected} />)}
+        </Stack>
       </div>
-      <div className={"App-Margin"}>
+      {selected != null && <div className={"App-Margin"}>
         <Heading Title={t("Home:Members")} />
-        <Member Member={{ ...user } as IMember}></Member>
-      </div>
+        {group[selected].Members.map((m) => <Member Member={m} />)}
+      </div>}
       <footer className={"App-Footer"}>
         <span className={"App-Footer-Text"}>{Copyright}</span>
       </footer>
     </div>
   );
 };
+
+function mapJSONGroups(data: any, i: number): IGroup {
+  return { DisplayName: data[i]["displayname"], Id: data[i]["id"], Open: data[i]["open"], Total: data[i]["total"], Members: data[i]["members"].map((item: any) => { return { Id: item["id"], DisplayName: item["displayname"], Open: item["open"], Total: item["total"], Image: item["image"] } as IMember; }) } as IGroup;
+}
+
+function mapJSONUser(data: any): IUser {
+  return { DisplayName: data["displayname"], Id: data["id"], Image: data["image"], Open: data["open"], Total: data["total"] } as IUser;
+}
+
+function getMe() {
+  return fetch("http://localhost:8080/api/user/me", {
+    method: "GET", mode: "cors", headers: { "Accept": "application/json", "Content-Type": "application/json", }, credentials: 'include'
+  });
+}
+
+function getGroupsByUser(u: IUser) {
+  return fetch("http://localhost:8080/api/group/" + u.Id.toString(), {
+    method: "GET", mode: "cors", headers: { "Accept": "application/json", "Content-Type": "application/json", }, credentials: 'include'
+  });
+}

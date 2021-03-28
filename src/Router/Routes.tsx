@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route, Router } from 'react-router';
 import { App } from '../App';
+import { NewGroup } from '../Pages/NewGroup/NewGroup';
 import { SignIn } from '../Pages/SignIn/SignIn';
 import { SignUp } from '../Pages/SignUp/SignUp';
 import { UserSettings } from '../Pages/UserSettings/UserSettings';
@@ -14,6 +15,9 @@ export const Routes = () => {
             <Switch>
                 <Route path={"/signin"} component={SignIn} />
                 <Route path={"/signup"} component={SignUp} />
+                <PrivateRoute path={"/newgroup"}>
+                    <NewGroup />
+                </PrivateRoute>
                 <PrivateRoute path={"/usersettings"}>
                     <UserSettings />
                 </PrivateRoute>

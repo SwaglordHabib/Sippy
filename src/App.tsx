@@ -22,23 +22,7 @@ export const App: React.FunctionComponent<IAppProps> = (props: React.PropsWithCh
   const [fetches, setFetch] = React.useState(0);
   if (fetches === 0) {
     setFetch(1);
-    getMe().then((response) => response.json()).then((data) => {
-      const u = mapJSONUser(data);
-      setUser(u);
-      getGroupsByUser(u).then((response) => response.json()).then((data) => {
-        const gs: IGroup[] = [];
-        for (let i = 0; i < data.length; i++) {
-          const g = mapJSONGroups(data, i);
-          gs.push(g);
-        }
-        setGroup([...group, ...gs]);
-        if (gs.length > 0) {
-          if (gs[0].Members.length > 0) {
-            setSelected(0);
-          }
-        }
-      });
-    });
+    Load(setUser, setGroup, setSelected);
   }
 
 
@@ -53,12 +37,12 @@ export const App: React.FunctionComponent<IAppProps> = (props: React.PropsWithCh
       <div className={"App-Margin"}>
         <Heading Title={t("Home:Groups")} OnClick={() => { history.push("/newgroup"); }} />
         <Stack horizontal>
-          {group.map((g, i) => <Groups Item={g} OnClick={() => setSelected(i)} Highlighted={i === selected} />)}
+          {group.map((g, i) => <Groups key={i} Item={g} OnClick={() => setSelected(i)} Highlighted={i === selected} />)}
         </Stack>
       </div>
       {selected != null && <div className={"App-Margin"}>
         <Heading Title={t("Home:Members")} />
-        {group[selected].Members.map((m) => <Member Member={m} />)}
+        {group[selected].Members.map((m, i) => <Member Member={m} key={i} Update={()=> Load(setUser, setGroup, setSelected)}/>)}
       </div>}
       <footer className={"App-Footer"}>
         <span className={"App-Footer-Text"}>{Copyright}</span>
@@ -67,8 +51,28 @@ export const App: React.FunctionComponent<IAppProps> = (props: React.PropsWithCh
   );
 };
 
+function Load(setUser: React.Dispatch<React.SetStateAction<IUser>>, setGroup: React.Dispatch<React.SetStateAction<IGroup[]>>, setSelected: React.Dispatch<React.SetStateAction<number | null>>) {
+  getMe().then((response) => response.json()).then((data) => {
+    const u = mapJSONUser(data);
+    setUser(u);
+    getGroupsByUser(u).then((response) => response.json()).then((data) => {
+      const gs: IGroup[] = [];
+      for (let i = 0; i < data.length; i++) {
+        const g = mapJSONGroups(data, i);
+        gs.push(g);
+      }
+      setGroup([...gs]);
+      if (gs.length > 0) {
+        if (gs[0].Members.length > 0) {
+          setSelected(0);
+        }
+      }
+    });
+  });
+}
+
 function mapJSONGroups(data: any, i: number): IGroup {
-  return { DisplayName: data[i]["displayname"], Id: data[i]["id"], Open: data[i]["open"], Total: data[i]["total"], Members: data[i]["members"].map((item: any) => { return { Id: item["id"], DisplayName: item["displayname"], Open: item["open"], Total: item["total"], Image: item["image"] } as IMember; }) } as IGroup;
+  return { DisplayName: data[i]["displayname"], Id: data[i]["id"], Open: data[i]["open"], Total: data[i]["total"], Members: data[i]["members"].map((item: any) => { return { Id: item["id"], DisplayName: item["displayname"], Open: item["open"], Total: item["total"], Image: item["image"], GroupID: data[i]["id"] } as IMember; }) } as IGroup;
 }
 
 function mapJSONUser(data: any): IUser {

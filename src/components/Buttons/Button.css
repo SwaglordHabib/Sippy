@@ -54,7 +54,6 @@
     height: 48px;
     margin-top: 14px;
     margin-right: 100%;
-    background: #ffffff 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 8px;
 }
@@ -68,7 +67,6 @@
 }
 
 .Button-Icon-Small {
-    background: #ffffff 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 8px;
     padding: 6px 12px 12px 6px;

@@ -29,7 +29,7 @@ export const Groups: React.FunctionComponent<IGroupsProps> = (props: React.Props
             <Stack>
                 <span className={"group-header"}>{props.Item.DisplayName}</span>
                 <Stack horizontal className={"group-imgs"}>
-                    {props.Item.Members.map((m) => <img alt={""} key={Math.random()} className={"group-member-image"} src={m.Image ? m.Image : emptyPic} />)}
+                    {props.Item.Members.map((m,i) => <img alt={""} key={i} className={"group-member-image"} src={m.Image ? m.Image : emptyPic} />)}
                 </Stack>
                 <Stack className={"group-info"}>
                     <span className={"group-info-open"}>{t('Group:open')}:{props.Item.Open}</span>

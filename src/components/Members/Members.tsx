@@ -17,12 +17,18 @@ export interface IMember extends IUser {
     Sips?: number;
     Joined: Date;
     Role: Role;
+    GroupID?: string;
 }
 
 export interface IMemberProps {
     Member: IMember;
-
+    Update: () => void;
 }
+
+export interface ISimpleMemberProps {
+    Member: IMember;
+}
+
 
 export const Member: React.FunctionComponent<IMemberProps> = (props: React.PropsWithChildren<IMemberProps>) => {
     const [Expanded, setExpanded] = React.useState(false);
@@ -36,7 +42,13 @@ export const Member: React.FunctionComponent<IMemberProps> = (props: React.Props
                     <span className={"member-name"}>{props.Member.DisplayName}</span>
                     <Stack className={"member-actions"} horizontal>
                         <span className={"member-open"}>{t('Member:opensips')}:{props.Member.Open}</span>
-                        <IconButton Icon={Icon.Plus} OnClick={() => { }} />
+                        <IconButton Icon={Icon.Plus} OnClick={() => {
+                            fetch(`http://localhost:8080/api/sips/add`, { body: JSON.stringify({ ID: props.Member.Id, GroupID: props.Member.GroupID, Count: 1 }), credentials: 'include', method: "POST", mode: "cors", headers: { "Accept": "application/json", "Content-Type": "application/json", } }).then((response) => {
+                                if (response.status === 200) {
+                                    props.Update();
+                                }
+                            });
+                        }} />
                         {Expanded ? <IconButton Icon={Icon.Expand} OnClick={() => { setExpanded(!Expanded); }} />
                             : <RotateIconButton Icon={Icon.Expand} OnClick={() => { setExpanded(!Expanded); }} />}
                         <IconButton Icon={Icon.DOTDOTDOT} OnClick={() => { }} />
@@ -50,7 +62,7 @@ export const Member: React.FunctionComponent<IMemberProps> = (props: React.Props
     );
 };
 
-export const SimpleMember: React.FunctionComponent<IMemberProps> = (props: React.PropsWithChildren<IMemberProps>) => {
+export const SimpleMember: React.FunctionComponent<ISimpleMemberProps> = (props: React.PropsWithChildren<ISimpleMemberProps>) => {
     return (
         <div>
             <div className={"member"}>

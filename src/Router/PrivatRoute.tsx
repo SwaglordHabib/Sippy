@@ -1,11 +1,6 @@
 import React from 'react';
 import { Redirect, Route, RouteProps } from 'react-router';
 
-export interface IPrivateRouteProps {
-    // path: string;
-}
-
-// TODO replace with auth
 export const PrivateRoute: React.FunctionComponent<RouteProps> = (props: React.PropsWithChildren<RouteProps>) => {
     const [isAuthenticated, setIsAuthenticated] = React.useState<boolean>(false);
     const [isLoaded, setIsLoaded] = React.useState<boolean>(false);
@@ -19,7 +14,7 @@ export const PrivateRoute: React.FunctionComponent<RouteProps> = (props: React.P
             }).then((response) => {
                 setIsAuthenticated(response.status === 200);
                 setIsLoaded(true);
-            }).catch((error) => {
+            }).catch(() => {
                 setIsAuthenticated(false);
                 setIsLoaded(true);
             });

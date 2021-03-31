@@ -51,7 +51,7 @@ export const Member: React.FunctionComponent<IMemberProps> = (props: React.Props
                         }} />
                         {Expanded ? <IconButton Icon={Icon.Expand} OnClick={() => { setExpanded(!Expanded); }} />
                             : <RotateIconButton Icon={Icon.Expand} OnClick={() => { setExpanded(!Expanded); }} />}
-                        <IconButton Icon={Icon.DOTDOTDOT} OnClick={() => { }} />
+                        <IconButton Icon={Icon.DOTDOTDOT} OnClick={() => { throw new Error("NotImplemeted") }} />
                     </Stack>
                 </Stack>
             </div>

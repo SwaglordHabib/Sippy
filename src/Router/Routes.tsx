@@ -9,7 +9,7 @@ import history from './history';
 import { PrivateRoute } from './PrivatRoute';
 
 
-export const Routes = () => {
+export const Routes = (): JSX.Element => {
     return (
         <Router history={history}>
             <Switch>

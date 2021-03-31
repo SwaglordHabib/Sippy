@@ -12,9 +12,6 @@ import history from '../../Router/history';
 
 export const Copyright = `© 2021-${new Date().getFullYear()} Sippy by \n Swaglord Habib aka Manuel Seelig`;
 
-export interface INewGroupProps {
-}
-
 export interface IGroup {
   ID: Guid;
   DisplayName: string;
@@ -25,7 +22,7 @@ export interface IGroup {
 
 export const emptyPic = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8Xw8AAoMBgDTD2qgAAAAASUVORK5CYII=";
 
-export const NewGroup: React.FunctionComponent<INewGroupProps> = (props: React.PropsWithChildren<INewGroupProps>) => {
+export const NewGroup: React.FunctionComponent = () => {
   const { t } = useTranslation(['NewGroup']);
 
   const [fetches, setFetch] = React.useState(0);
@@ -58,7 +55,7 @@ export const NewGroup: React.FunctionComponent<INewGroupProps> = (props: React.P
           <span className={"textfield-title"}>{t('NewGroup:Friends')}</span>
           {Groupmembers.map(m => <SimpleMember Member={m} key={Guid.create().toString()} />)}
           <div className={"center"}>
-            <IconButton Icon={Icon.Plus} OnClick={() => { }} />
+            <IconButton Icon={Icon.Plus} OnClick={() => { throw new Error("NotImplemeted")}} />
           </div>
         </div>
         <div className={"NewGroup-Create"}>

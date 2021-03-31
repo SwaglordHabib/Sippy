@@ -7,9 +7,9 @@ import { CheckBox } from '../../components/CheckBox/CheckBox';
 import { TextFieldWithValidation, TextFieldType, Valid, TextField } from '../../components/TextField/TextField';
 import { Copyright } from '../SignIn/SignIn';
 
-export interface ISignUpProps { }
 
-export const SignUp: React.FunctionComponent<ISignUpProps> = (props: React.PropsWithChildren<ISignUpProps>) => {
+
+export const SignUp: React.FunctionComponent = () => {
   const { t } = useTranslation(['SignUp']);
 
   const [Email, setEmail] = React.useState("");

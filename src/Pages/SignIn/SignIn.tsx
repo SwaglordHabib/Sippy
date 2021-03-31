@@ -8,9 +8,8 @@ import history from '../../Router/history';
 
 export const Copyright = `© 2021-${new Date().getFullYear()} Swaglord Habib aka Manuel Seelig`;
 
-export interface ISignInProps { }
 
-export const SignIn: React.FunctionComponent<ISignInProps> = (props: React.PropsWithChildren<ISignInProps>) => {
+export const SignIn: React.FunctionComponent = () => {
   const { t } = useTranslation(['SignIn']);
 
   const [fetches, setFetch] = React.useState(0);

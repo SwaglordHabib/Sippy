@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import './App.css';
 import { useTranslation } from 'react-i18next';
@@ -10,9 +11,8 @@ import { Copyright } from './Pages/SignIn/SignIn';
 import history from './Router/history';
 import { Stack } from '@fluentui/react';
 
-export interface IAppProps { }
 
-export const App: React.FunctionComponent<IAppProps> = (props: React.PropsWithChildren<IAppProps>) => {
+export const App: React.FunctionComponent = () => {
   const { t } = useTranslation(['Home']);
 
   const [user, setUser] = React.useState({} as IUser);

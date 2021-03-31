@@ -9,13 +9,10 @@ import { Stack } from '@fluentui/react';
 
 export const Copyright = `© 2021-${new Date().getFullYear()} Sippy by \n Swaglord Habib aka Manuel Seelig`;
 
-export interface IUserSettingsProps {
-}
-
 
 export const emptyPic = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8Xw8AAoMBgDTD2qgAAAAASUVORK5CYII=";
 
-export const UserSettings: React.FunctionComponent<IUserSettingsProps> = (props: React.PropsWithChildren<IUserSettingsProps>) => {
+export const UserSettings: React.FunctionComponent = () => {
   const { t } = useTranslation(['UserSettings']);
 
   const [User, setUser] = React.useState({} as IUser);
@@ -78,9 +75,9 @@ export const UserSettings: React.FunctionComponent<IUserSettingsProps> = (props:
             accept="image/jpg,image/jpeg,image/png,image/bmp,image/gif"
             onChange={(e) => handleFileChange(e)}
           />
-          <img ref={uploadedImage} className={"UserSettings-Profil-Picture"} alt={"profilepicture"} src={User?.Image ? User?.Image : emptyPic} onClick={(e) => handleClick()}></img>
+          <img ref={uploadedImage} className={"UserSettings-Profil-Picture"} alt={"profilepicture"} src={User?.Image ? User?.Image : emptyPic} onClick={() => handleClick()}></img>
           <div className={"UserSettings-Change"}>
-            <span className={"UserSettings-Colortext-Change"} onClick={(e) => handleClick()}>{t("UserSettings:change")}</span>
+            <span className={"UserSettings-Colortext-Change"} onClick={() => handleClick()}>{t("UserSettings:change")}</span>
           </div>
           <div className={"UserSettings-Inputs"}>
             <TextField

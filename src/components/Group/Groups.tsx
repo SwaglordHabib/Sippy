@@ -8,11 +8,11 @@ import { IMember } from '../Members/Members';
 import { emptyPic } from '../../Pages/UserSettings/UserSettings';
 
 export interface IGroup {
-    Id: Guid;
-    DisplayName: string;
-    Open: number;
-    Total: number;
-    Members: IMember[];
+    id: Guid;
+    displayName: string;
+    open: number;
+    total: number;
+    members: IMember[];
 }
 
 export interface IGroupsProps {
@@ -27,13 +27,13 @@ export const Groups: React.FunctionComponent<IGroupsProps> = (props: React.Props
     return (
         <div className={props.Highlighted ? "group-highlight" : "group"} onClick={props.OnClick}>
             <Stack>
-                <span className={"group-header"}>{props.Item.DisplayName}</span>
+                <span className={"group-header"}>{props.Item.displayName}</span>
                 <Stack horizontal className={"group-imgs"}>
-                    {props.Item.Members.map((m,i) => <img alt={""} key={i} className={"group-member-image"} src={m.Image ? m.Image : emptyPic} />)}
+                    {props.Item.members.map((m,i) => <img alt={""} key={i} className={"group-member-image"} src={m.image ? m.image : emptyPic} />)}
                 </Stack>
                 <Stack className={"group-info"}>
-                    <span className={"group-info-open"}>{t('Group:open')}:{props.Item.Open}</span>
-                    <span className={"group-info-total"}>{t('Group:total')}:{props.Item.Total}</span>
+                    <span className={"group-info-open"}>{t('Group:open')}:{props.Item.open}</span>
+                    <span className={"group-info-total"}>{t('Group:total')}:{props.Item.total}</span>
                 </Stack>
             </Stack>
         </div>

@@ -100,3 +100,23 @@
 .Button-Img-Small {
     margin-right: 4px;
 }
+
+.Button-Icon-Big {
+    height: 48px;
+    width: 48px;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 8px;
+    border-width: 0px;
+    border-style: none;
+    border-color: transparent;
+    border-image: none;
+    margin: 8px;
+    background-color: white;
+}
+
+.Button-Img-Big {
+    height: 16px;
+    width: 16px;
+    display: block;
+    margin: auto;
+}

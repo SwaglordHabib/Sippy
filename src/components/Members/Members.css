@@ -1,32 +1,33 @@
 .member {
     width: 100%;
-    max-width: 335px;
+    max-width: 342px;
     height: 40px;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 8px;
     position: relative;
     z-index: 1;
     margin-top: 20px;
+    background-color: white;
 }
 
 .member-expanded {
     width: 100%;
-    max-width: 335px;
+    max-width: 342px;
     height: 140px;
     background: #0000000A 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 8px;
     position: relative;
     top: -40px;
+    z-index: -1;
 }
 
 .member > div {
-    position: relative;
-    top:4px
+    padding-top: 4px;
 }
 
 .member-actions {
-    float: right;
+    /* float: right; */
 }
 
 .member-img {
@@ -62,4 +63,11 @@
     font: normal normal normal 14px/17px Corbel;
     letter-spacing: 0px;
     color: #707070;
+}
+
+
+.member-shots{
+    position: relative;
+    top: 40px;
+    height: 100px;
 }

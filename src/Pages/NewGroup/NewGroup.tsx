@@ -13,10 +13,10 @@ import history from '../../Router/history';
 export const Copyright = `© 2021-${new Date().getFullYear()} Sippy by \n Swaglord Habib aka Manuel Seelig`;
 
 export interface IGroup {
-  ID: Guid;
-  DisplayName: string;
-  Open: number;
-  Total: number;
+  iD: Guid;
+  displayName: string;
+  open: number;
+  total: number;
 }
 
 
@@ -28,11 +28,11 @@ export const NewGroup: React.FunctionComponent = () => {
   const [fetches, setFetch] = React.useState(0);
   if (fetches === 0) {
     setFetch(1);
-    fetch("http://localhost:8080/api/user/me", {
-      method: "GET", mode: "cors", headers: { "Accept": "application/json", "Content-Type": "application/json", }, credentials: 'include'
+    fetch("http://localhost:8080/api/me", {
+      method: "GET", mode: "cors", headers: { "Accept": "application/json", "Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem("accessToken")}` }, credentials: 'include'
     }).then((response) => response.json()).then((data) => {
-      const u = { DisplayName: data["displayname"], Id: data["id"], Image: data["image"], Open: data["open"], Total: data["total"] } as IUser;
-      setGroupmembers([...Groupmembers, { ...u, Joined: new Date(), Role: Role.Admin, }]);
+      const u = { displayName: data["displayName"], id: data["id"], image: data["image"], open: data["open"], total: data["total"] } as IUser;
+      setGroupmembers([...Groupmembers, { ...u, joined: new Date(), role: Role.Admin, }]);
     });
   }
 
@@ -61,10 +61,10 @@ export const NewGroup: React.FunctionComponent = () => {
         <div className={"NewGroup-Create"}>
           <ButtonWithIcon Icon={Icon.Plus} OnClick={() => {
             fetch("http://localhost:8080/api/group/", {
-              body: JSON.stringify({ DisplayName: Groupname, } as IGroup),
+              body: JSON.stringify({ displayName: Groupname, } as IGroup),
               method: "POST",
-              mode: "cors",
-              headers: { "Accept": "application/json", "Content-Type": "application/json" },
+              mode: "no-cors",
+              headers: { "Accept": "application/json", "Content-Type": "application/json", Authorization: `Bearer ${localStorage.getItem("accessToken")}` },
               credentials: 'include'
             }
             ).then((response) => {

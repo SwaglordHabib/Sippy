@@ -1,7 +1,7 @@
 import React from 'react';
 import { Stack } from '@fluentui/react/lib/components/Stack/Stack';
 import { IUser } from '../User/User';
-import { Icon, IconButton, RotateIconButton } from '../Buttons/IconButton';
+import { BigButtonWithIcon, Icon, IconButton, RotateIconButton } from '../Buttons/IconButton';
 import "../../i18n/config";
 import "./Members.css";
 import { emptyPic } from '../../Pages/UserSettings/UserSettings';
@@ -14,10 +14,10 @@ export enum Role {
 }
 
 export interface IMember extends IUser {
-    Sips?: number;
-    Joined: Date;
-    Role: Role;
-    GroupID?: string;
+    sips?: number;
+    joined: Date;
+    role: Role;
+    groupID?: string;
 }
 
 export interface IMemberProps {
@@ -35,30 +35,34 @@ export const Member: React.FunctionComponent<IMemberProps> = (props: React.Props
     const { t } = useTranslation(['Group']);
 
     return (
-        <div>
+        <>
             <div className={"member"}>
                 <Stack horizontal>
-                    <img className={"member-img"} src={props.Member.Image ? props.Member.Image : emptyPic} alt={"profil"}></img>
-                    <span className={"member-name"}>{props.Member.DisplayName}</span>
+                    <img className={"member-img"} src={props.Member.image ? props.Member.image : emptyPic} alt={"profil"}></img>
+                    <span className={"member-name"}>{props.Member.displayName}</span>
                     <Stack className={"member-actions"} horizontal>
-                        <span className={"member-open"}>{t('Member:opensips')}:{props.Member.Open}</span>
+                        <span className={"member-open"}>{t('Member:opensips')}:{props.Member.open}</span>
                         <IconButton Icon={Icon.Plus} OnClick={() => {
-                            fetch(`http://localhost:8080/api/sips/add`, { body: JSON.stringify({ ID: props.Member.Id, GroupID: props.Member.GroupID, Count: 1 }), credentials: 'include', method: "POST", mode: "cors", headers: { "Accept": "application/json", "Content-Type": "application/json", } }).then((response) => {
+                            fetch(`http://localhost:8080/api/sips/add`, { body: JSON.stringify({ ID: props.Member.id, GroupID: props.Member.groupID, Count: 1 }), credentials: 'include', method: "POST", mode: "cors", headers: { "Accept": "application/json", "Content-Type": "application/json", } }).then((response) => {
                                 if (response.status === 200) {
                                     props.Update();
                                 }
                             });
                         }} />
-                        {Expanded ? <IconButton Icon={Icon.Expand} OnClick={() => { setExpanded(!Expanded); }} />
-                            : <RotateIconButton Icon={Icon.Expand} OnClick={() => { setExpanded(!Expanded); }} />}
-                        <IconButton Icon={Icon.DOTDOTDOT} OnClick={() => { throw new Error("NotImplemeted") }} />
+                        {/* {Expanded ? <IconButton Icon={Icon.Expand} OnClick={() => { setExpanded(!Expanded); }} />
+                            : <RotateIconButton Icon={Icon.Expand} OnClick={() => { setExpanded(!Expanded); }} />} */}
+                        {/* <IconButton Icon={Icon.DOTDOTDOT} OnClick={() => { throw new Error("NotImplemeted") }} /> */}
                     </Stack>
                 </Stack>
             </div>
-            {Expanded && <div className={"member-expanded"}>
-
+            {<div className={"member-expanded"}>
+                <Stack horizontal className={"member-shots"} horizontalAlign={"space-around"}>
+                    <BigButtonWithIcon Icon={Icon.Plus} OnClick={() => { console.log(-1)}} />
+                    <BigButtonWithIcon Icon={Icon.Plus} OnClick={() => { console.log(-3)}} />
+                    <BigButtonWithIcon Icon={Icon.Plus} OnClick={() => { console.log(-15)}} />
+                </Stack>
             </div>}
-        </div>
+        </>
     );
 };
 
@@ -67,8 +71,8 @@ export const SimpleMember: React.FunctionComponent<ISimpleMemberProps> = (props:
         <div>
             <div className={"member"}>
                 <Stack horizontal>
-                    <img className={"member-img"} src={props.Member.Image ? props.Member.Image : emptyPic} alt={"profil"}></img>
-                    <span className={"member-name"}>{props.Member.DisplayName}</span>
+                    <img className={"member-img"} src={props.Member.image ? props.Member.image : emptyPic} alt={"profil"}></img>
+                    <span className={"member-name"}>{props.Member.displayName}</span>
                 </Stack>
             </div>
         </div>

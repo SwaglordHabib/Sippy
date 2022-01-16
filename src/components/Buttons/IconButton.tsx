@@ -86,3 +86,13 @@ export const ButtonWithIconSmall: React.FunctionComponent<IButtonWithIconProps> 
         </button>
     );
 };
+
+
+export const BigButtonWithIcon: React.FunctionComponent<IButtonWithIconProps> = (props: React.PropsWithChildren<IButtonWithIconProps>) => {
+
+    return (
+        <button className={"Button-Icon-Big"} disabled={props.Disabled} onClick={props.OnClick}>
+            <img className={"Button-Img-Big"} alt={props.Icon.toString()} src={props.Icon}/>
+        </button>
+    );
+};
